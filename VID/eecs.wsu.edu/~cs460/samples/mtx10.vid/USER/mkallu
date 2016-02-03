@@ -1,9 +1,0 @@
-VFD=../../FDimage
-
-# clear files in /bin first
-mount -o loop $VFD /mnt
-rm /mnt/bin/*
-umount /mnt
-
-./mku u1
-./mku u2
