@@ -1,0 +1,22 @@
+<html>
+<body>
+<pre>
+
+                   Assignment #4
+
+1. Download files from samples/LAB4
+
+       int.c kernel.c mk mtximage mtxlib OBJ README t.c ts.s type.h
+
+USER: crt0.o mkallu mku u1.c u2.c ucode.c u.s
+
+2. Run mk to create both mtx kernel and USER mode images ==> mtximage
+
+3. Run q (or your qemu-system-i386) to test.
+====================================================
+                    Requirements:
+
+Write your own wait.c:          ksleep, kwakeup, kexit, kwait
+Write your own fork-exec.c:     kfork(), fork(), kexec()
+USER: your won crt0.c     :     main0(char *cmdline), which calls
+                                main(int argc, char *argv[ ])

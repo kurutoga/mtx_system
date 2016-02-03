@@ -1,0 +1,60 @@
+<html>
+<body>
+<pre>
+
+
+                 CS460 Assignment #2
+                DUE: week of 9-14-2015
+
+PROBLEM #2  in Chapter 4 of TEXT:
+
+1. ts.s file: MODIFIED as shown below
+
+!---------- ts.s file ---------------   
+        OSSEG  = 0x1000
+       .globl _main,_running,_scheduler
+       .globl _proc, _procSize
+       .globl _tswitch
+	
+        jmpi   start,OSSEG
+start:	mov  ax,cs
+	mov  ds,ax
+	mov  ss,ax
+	mov  sp,#_proc
+	add  sp,_procSize
+	call _main
+
+_tswitch:
+SAVE:	
+	push ax
+	push bx
+	push cx
+	push dx
+	push bp
+	push si
+	push di
+	pushf
+
+! ----- ADD THESE LINES -------------
+        push ds
+        push ss
+!------ END of added lines ----------
+
+	mov  bx,_running
+	mov  2[bx],sp
+
+FIND:	call _scheduler
+
+RESUME: <=== YOU FINISH THIS PART
+
+2. t.c file: SAME AS the C code on Page 120-123 EXCEPT the body() function is
+   modified as:
+             int body(int pid)
+             {
+               // pid is the process pid when it resumes to body()
+             }
+
+3.  REQUIREMENTS:
+      Finish the RESUME part in ts.s file
+      Modify any needed part in t.c to make the system work.
+      Demonstrate YOUR work 
